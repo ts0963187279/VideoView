@@ -1,18 +1,24 @@
-package com.walton.waltonmis.myskyvideo.model;
+package com.walton.example.model;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import com.walton.mylibrary.view.MySkyVideoLayoutParams;
-import com.walton.mylibrary.view.MySkyVideoView;
-import com.walton.waltonmis.myskyvideo.Listener.MyForwardOnDoubleClickListener;
-import com.walton.waltonmis.myskyvideo.Listener.MyRewindOnDoubleClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import com.walton.videostreamview.view.VideoStreamView;
+import com.walton.example.listener.MyForwardOnDoubleClickListener;
+import com.walton.example.listener.MyRewindOnDoubleClickListener;
 import com.walton.waltonmis.myskyvideo.R;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+/**
+ * Created by waltonmis on 2017/8/15.
+ */
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -39,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(InputStream inputStream) {
-            MySkyVideoView mySkyVideoView;
-            mySkyVideoView = new MySkyVideoView(context,inputStream);
-            addContentView(mySkyVideoView, new MySkyVideoLayoutParams());
-            mySkyVideoView.setLeftOnDoubleListener(new MyRewindOnDoubleClickListener());
-            mySkyVideoView.setRightOnDoubleListener(new MyForwardOnDoubleClickListener());
-            mySkyVideoView.setMiddleOnClickListener(new MyForwardOnDoubleClickListener());
+            VideoStreamView videoStreamView;
+            videoStreamView = new VideoStreamView(context,inputStream);
+            addContentView(videoStreamView,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            videoStreamView.setLeftOnDoubleListener(new MyRewindOnDoubleClickListener());
+            videoStreamView.setRightOnDoubleListener(new MyForwardOnDoubleClickListener());
+            videoStreamView.setMiddleOnClickListener(new MyForwardOnDoubleClickListener());
         }
     }
 }

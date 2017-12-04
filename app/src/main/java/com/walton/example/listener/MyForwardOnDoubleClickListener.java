@@ -1,14 +1,14 @@
-package com.walton.myvideoview.listener;
+package com.walton.example.listener;
 
 import android.view.View;
 
-import com.walton.myvideoview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerView;
 
 /**
  * Created by waltonmis on 2017/8/15.
  */
 
-public class ForwardOnDoubleClickListener implements View.OnClickListener {
+public class MyForwardOnDoubleClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         MediaControllerView mediaControllerView = (MediaControllerView)view;

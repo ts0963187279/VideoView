@@ -1,10 +1,10 @@
-package com.walton.myvideoview.listener;
+package com.walton.videostreamview.listener;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.walton.myvideoview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerView;
 
 /**
  * Created by waltonmis on 2017/8/21.

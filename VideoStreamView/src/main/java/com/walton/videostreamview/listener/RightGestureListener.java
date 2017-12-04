@@ -1,21 +1,21 @@
-package com.walton.myvideoview.listener;
+package com.walton.videostreamview.listener;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.walton.myvideoview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerView;
 
 /**
  * Created by waltonmis on 2017/8/21.
  */
 
-public class MiddleGestureListener extends GestureDetector.SimpleOnGestureListener{
-    View.OnClickListener onClickListener = new PlayOnClickListener();
-    View.OnClickListener onDoubleClickListener = null;
+public class RightGestureListener extends GestureDetector.SimpleOnGestureListener{
+    View.OnClickListener onClickListener = null;
+    View.OnClickListener onDoubleClickListener = new ForwardOnDoubleClickListener();
     View.OnLongClickListener onLongClickListener = null;
     MediaControllerView mediaControllerView = null;
-    public void setLongClickeListener(View.OnLongClickListener onLongClickListener){
+    public void setLongClickListener(View.OnLongClickListener onLongClickListener){
         this.onLongClickListener = onLongClickListener;
     }
     public void setOnClickListener(View.OnClickListener onClickListener){

@@ -1,14 +1,14 @@
-package com.walton.myvideoview.listener;
+package com.walton.example.listener;
 
 import android.view.View;
 
-import com.walton.myvideoview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerView;
 
 /**
  * Created by waltonmis on 2017/8/15.
  */
 
-public class PlayOnClickListener implements View.OnClickListener {
+public class MyPlayOnClickListener implements View.OnClickListener {
     static boolean isPause = false;
     @Override
     public void onClick(View view) {

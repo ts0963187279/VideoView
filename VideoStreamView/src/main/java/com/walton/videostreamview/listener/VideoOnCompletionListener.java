@@ -1,8 +1,8 @@
-package com.walton.myvideoview.listener;
+package com.walton.videostreamview.listener;
 
 import android.media.MediaPlayer;
 
-import com.walton.myvideoview.view.VideoPlayerView;
+import com.walton.videostreamview.view.VideoPlayerView;
 
 /**
  * Created by waltonmis on 2017/8/15.

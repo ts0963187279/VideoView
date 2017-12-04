@@ -1,1 +1,1 @@
-include ':app', ':myvideoview'
+include ':app', ':VideoStreamView'

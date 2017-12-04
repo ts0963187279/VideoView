@@ -1,4 +1,4 @@
-package com.walton.myvideoview.view;
+package com.walton.videostreamview.view;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.walton.myvideoview.listener.ForwardOnDoubleClickListener;
-import com.walton.myvideoview.listener.LeftGestureListener;
-import com.walton.myvideoview.listener.LeftOnTouchListener;
-import com.walton.myvideoview.listener.MiddleGestureListener;
-import com.walton.myvideoview.listener.MiddleOnTouchListener;
-import com.walton.myvideoview.listener.PlayOnClickListener;
-import com.walton.myvideoview.listener.RewindOnDoubleClickListener;
-import com.walton.myvideoview.listener.RightGestureListener;
-import com.walton.myvideoview.listener.RightOnTouchListener;
+import com.walton.videostreamview.listener.ForwardOnDoubleClickListener;
+import com.walton.videostreamview.listener.LeftGestureListener;
+import com.walton.videostreamview.listener.LeftOnTouchListener;
+import com.walton.videostreamview.listener.MiddleGestureListener;
+import com.walton.videostreamview.listener.MiddleOnTouchListener;
+import com.walton.videostreamview.listener.PlayOnClickListener;
+import com.walton.videostreamview.listener.RewindOnDoubleClickListener;
+import com.walton.videostreamview.listener.RightGestureListener;
+import com.walton.videostreamview.listener.RightOnTouchListener;
 
 /**
  * Created by waltonmis on 2017/8/15.
@@ -97,7 +97,7 @@ public class MediaControllerView extends LinearLayout {
         rightGestureListener.setOnDoubleClickListener(onDoubleListener);
     }
     public void setRightOnLongClickListener(OnLongClickListener onLongClickListener){
-        rightGestureListener.setLongClickeListener(onLongClickListener);
+        rightGestureListener.setLongClickListener(onLongClickListener);
     }
     public void setMiddleOnClickListener(OnClickListener onClickListener){
         middleGestureListener.setOnClickListener(onClickListener);
