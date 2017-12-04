@@ -1,1 +1,1 @@
-include ':app', ':myskyvideo'
+include ':app', ':myvideoview'
