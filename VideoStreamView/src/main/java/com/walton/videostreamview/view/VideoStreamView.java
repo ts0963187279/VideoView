@@ -6,6 +6,10 @@ import android.view.Gravity;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.walton.videostreamview.listener.OnDoubleClickListener;
+import com.walton.videostreamview.listener.OnMoveHorizontallyListener;
+import com.walton.videostreamview.listener.OnMoveVerticallyListener;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,32 +35,23 @@ public class VideoStreamView extends RelativeLayout{
         new LoadVideo().execute(inputStream);
         mediaControllerView = new MediaControllerView(context);
     }
-    public void setLeftOnClickListener(OnClickListener onClickListener){
-        mediaControllerView.setLeftOnClickListener(onClickListener);
-    }
-    public void setLeftOnDoubleListener(OnClickListener onDoubleListener){
+    public void setLeftOnDoubleListener(OnDoubleClickListener onDoubleListener){
         mediaControllerView.setLeftOnDoubleListener(onDoubleListener);
     }
-    public void setLeftOnLongClickListener(OnLongClickListener onLongClickListener){
-        mediaControllerView.setLeftOnLongClickListener(onLongClickListener);
+    public void setLeftOnMoveVerticallyListener(OnMoveVerticallyListener onMoveVerticallyListener){
+        mediaControllerView.setLeftOnMoveVerticallyListener(onMoveVerticallyListener);
     }
-    public void setRightOnClickListener(OnClickListener onClickListener){
-        mediaControllerView.setRightOnClickListener(onClickListener);
-    }
-    public void setRightOnDoubleListener(OnClickListener onDoubleListener){
+    public void setRightOnDoubleListener(OnDoubleClickListener onDoubleListener){
         mediaControllerView.setRightOnDoubleListener(onDoubleListener);
     }
-    public void setRightOnLongClickListener(OnLongClickListener onLongClickListener){
-        mediaControllerView.setRightOnLongClickListener(onLongClickListener);
+    public void setRightOnMoveVerticallyListener(OnMoveVerticallyListener onMoveVerticalListener){
+        mediaControllerView.setRightOnMoveVerticallyListener(onMoveVerticalListener);
     }
     public void setMiddleOnClickListener(OnClickListener onClickListener){
         mediaControllerView.setMiddleOnClickListener(onClickListener);
     }
-    public void setMiddleOnDoubleListener(OnClickListener onDoubleListener){
-        mediaControllerView.setMiddleOnDoubleListener(onDoubleListener);
-    }
-    public void setMiddleOnLongClickListener(OnLongClickListener onLongClickListener){
-        mediaControllerView.setMiddleOnLongClickListener(onLongClickListener);
+    public void setMediaControllerOnMoveHorizontallyListener(OnMoveHorizontallyListener onMoveHorizontallyListener){
+        mediaControllerView.setMediaControllerOnMoveHorizontallyListener(onMoveHorizontallyListener);
     }
     private class LoadVideo extends AsyncTask<InputStream, Integer, File> {
         @Override

@@ -4,9 +4,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.walton.example.listener.MyChangeProgressOnMoveHorizontalListener;
+import com.walton.example.listener.MyChangeVolumeOnMoveVerticallyListener;
+import com.walton.example.listener.MyPlayOnClickListener;
 import com.walton.videostreamview.view.VideoStreamView;
 import com.walton.example.listener.MyForwardOnDoubleClickListener;
 import com.walton.example.listener.MyRewindOnDoubleClickListener;
@@ -50,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
             addContentView(videoStreamView,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             videoStreamView.setLeftOnDoubleListener(new MyRewindOnDoubleClickListener());
             videoStreamView.setRightOnDoubleListener(new MyForwardOnDoubleClickListener());
-            videoStreamView.setMiddleOnClickListener(new MyForwardOnDoubleClickListener());
+            videoStreamView.setMiddleOnClickListener(new MyPlayOnClickListener());
+            videoStreamView.setRightOnMoveVerticallyListener(new MyChangeVolumeOnMoveVerticallyListener());
+            videoStreamView.setMediaControllerOnMoveHorizontallyListener(new MyChangeProgressOnMoveHorizontalListener());
         }
     }
 }

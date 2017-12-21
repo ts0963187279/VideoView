@@ -3,68 +3,63 @@ package com.walton.videostreamview.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
-import com.walton.videostreamview.listener.ForwardOnDoubleClickListener;
-import com.walton.videostreamview.listener.LeftGestureListener;
-import com.walton.videostreamview.listener.LeftOnTouchListener;
-import com.walton.videostreamview.listener.MiddleGestureListener;
-import com.walton.videostreamview.listener.MiddleOnTouchListener;
-import com.walton.videostreamview.listener.PlayOnClickListener;
-import com.walton.videostreamview.listener.RewindOnDoubleClickListener;
-import com.walton.videostreamview.listener.RightGestureListener;
-import com.walton.videostreamview.listener.RightOnTouchListener;
+import com.walton.videostreamview.listener.OnDoubleClickListener;
+import com.walton.videostreamview.listener.OnMoveHorizontallyListener;
+import com.walton.videostreamview.listener.OnMoveVerticallyListener;
 
 /**
  * Created by waltonmis on 2017/8/15.
  */
 
 public class MediaControllerView extends LinearLayout {
-    Button middle,left,right;
-    VideoPlayerView videoPlayerView;
-    LeftOnTouchListener leftOnTouchListener ;
-    LeftGestureListener leftGestureListener;
-    RightOnTouchListener rightOnTouchListener ;
-    RightGestureListener rightGestureListener;
-    MiddleOnTouchListener middleOnTouchListener ;
-    MiddleGestureListener middleGestureListener;
+    private MediaControlButton middle,left,right;
+    private MediaControllerButtonView mediaControllerButtonView;
+    private VideoPlayerView videoPlayerView;
     public MediaControllerView(Context context) {
         super(context);
-        leftOnTouchListener = new LeftOnTouchListener();
-        leftGestureListener = new LeftGestureListener();
-        leftGestureListener.setOnDoubleClickListener(new RewindOnDoubleClickListener());
-        rightOnTouchListener = new RightOnTouchListener();
-        rightGestureListener = new RightGestureListener();
-        rightGestureListener.setOnDoubleClickListener(new ForwardOnDoubleClickListener());
-        middleOnTouchListener = new MiddleOnTouchListener();
-        middleGestureListener = new MiddleGestureListener();
-        middleGestureListener.setOnClickListener(new PlayOnClickListener());
-        setGravity(Gravity.CENTER_HORIZONTAL);
+//        setGravity(Gravity.CENTER_HORIZONTAL);
+//        setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//        setWeightSum(10);
+//        left = new MediaControlButton(context,this);
+//        middle = new MediaControlButton(context,this);
+//        right = new MediaControlButton(context,this);
+//        left.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
+//        middle.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,2.0f));
+//        right.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
+//        left.setBackgroundColor(Color.argb(0,0,0,0));
+//        middle.setBackgroundColor(Color.argb(0,0,0,0));
+//        right.setBackgroundColor(Color.argb(0,0,0,0));
+//        addView(left);
+//        addView(middle);
+//        addView(right);
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        setWeightSum(10);
-        left = new Button(context);
-        middle = new Button(context);
-        right = new Button(context);
-        left.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
-        middle.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,2.0f));
-        right.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
-        left.setBackgroundColor(Color.argb(0,0,100,100));
-        middle.setBackgroundColor(Color.argb(0,0,0,0));
-        right.setBackgroundColor(Color.argb(0,0,0,0));
-        addView(left);
-        addView(middle);
-        addView(right);
+        mediaControllerButtonView = new MediaControllerButtonView(context,this);
+        addView(mediaControllerButtonView);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                System.out.println("MediaControllerView ==== ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_UP:
+                System.out.println("MediaControllerView ==== ACTION_UP");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                System.out.println("MediaControllerView ==== ACTION_MOVE");
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
     public void setVideoView(VideoPlayerView videoPlayerView){
         this.videoPlayerView = videoPlayerView;
-        leftOnTouchListener.setView(this);
-        left.setOnTouchListener(leftOnTouchListener);
-        rightOnTouchListener.setView(this);
-        right.setOnTouchListener(rightOnTouchListener);
-        middleOnTouchListener.setView(this);
-        middle.setOnTouchListener(middleOnTouchListener);
     }
     public void setTime(int time){
         videoPlayerView.setTime(time);
@@ -81,31 +76,22 @@ public class MediaControllerView extends LinearLayout {
     public void start(){
         videoPlayerView.start();
     }
-    public void setLeftOnClickListener(OnClickListener onClickListener){
-        leftGestureListener.setOnClickListener(onClickListener);
+    public void setLeftOnDoubleListener(OnDoubleClickListener onDoubleListener){
+        mediaControllerButtonView.setLeftButtonOnDoubleClickListener(onDoubleListener);
     }
-    public void setLeftOnDoubleListener(OnClickListener onDoubleListener){
-        leftGestureListener.setOnDoubleClickListener(onDoubleListener);
+    public void setLeftOnMoveVerticallyListener(OnMoveVerticallyListener onMoveVerticallyListener){
+        mediaControllerButtonView.setLeftButtonOnMoveVerticallyListener(onMoveVerticallyListener);
     }
-    public void setLeftOnLongClickListener(OnLongClickListener onLongClickListener){
-        leftGestureListener.setLongClickeListener(onLongClickListener);
+    public void setRightOnDoubleListener(OnDoubleClickListener onDoubleListener){
+        mediaControllerButtonView.setRightButtonOnClickListener(onDoubleListener);
     }
-    public void setRightOnClickListener(OnClickListener onClickListener){
-        rightGestureListener.setOnClickListener(onClickListener);
-    }
-    public void setRightOnDoubleListener(OnClickListener onDoubleListener){
-        rightGestureListener.setOnDoubleClickListener(onDoubleListener);
-    }
-    public void setRightOnLongClickListener(OnLongClickListener onLongClickListener){
-        rightGestureListener.setLongClickListener(onLongClickListener);
+    public void setRightOnMoveVerticallyListener(OnMoveVerticallyListener onMoveVerticallyListener){
+        mediaControllerButtonView.setRightButtonOnMoveVerticallyListener(onMoveVerticallyListener);
     }
     public void setMiddleOnClickListener(OnClickListener onClickListener){
-        middleGestureListener.setOnClickListener(onClickListener);
+        mediaControllerButtonView.setMiddleButtonOnClickListener(onClickListener);
     }
-    public void setMiddleOnDoubleListener(OnClickListener onDoubleListener){
-        middleGestureListener.setOnDoubleClickListener(onDoubleListener);
-    }
-    public void setMiddleOnLongClickListener(OnLongClickListener onLongClickListener){
-        middleGestureListener.setLongClickeListener(onLongClickListener);
+    public void setMediaControllerOnMoveHorizontallyListener(OnMoveHorizontallyListener onMoveHorizontallyListener){
+        mediaControllerButtonView.setOnMoveHorizontallyListener(onMoveHorizontallyListener);
     }
 }
