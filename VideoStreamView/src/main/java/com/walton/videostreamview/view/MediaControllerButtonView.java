@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.walton.videostreamview.listener.ChangeBrightnessOnMoveVerticallyListener;
 import com.walton.videostreamview.listener.ChangeProgressOnMoveHorizontalListener;
+import com.walton.videostreamview.listener.ChangeVolumeOnMoveVerticallyListener;
 import com.walton.videostreamview.listener.OnDoubleClickListener;
 import com.walton.videostreamview.listener.OnMoveHorizontallyListener;
 import com.walton.videostreamview.listener.OnMoveVerticallyListener;
@@ -45,6 +47,8 @@ public class MediaControllerButtonView extends LinearLayout {
         addView(left);
         addView(middle);
         addView(right);
+        left.setOnMoveVerticallyListener(new ChangeBrightnessOnMoveVerticallyListener());
+        right.setOnMoveVerticallyListener(new ChangeVolumeOnMoveVerticallyListener());
     }
     public void setRightButtonOnClickListener(OnDoubleClickListener onDoubleClickListener){
         right.setOnDoubleClickListener(onDoubleClickListener);

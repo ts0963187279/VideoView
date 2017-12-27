@@ -9,11 +9,11 @@ import com.walton.videostreamview.view.MediaControllerView;
  * Created by waltonmis on 2017/8/15.
  */
 
-public class MyForwardOnDoubleClickListener implements OnDoubleClickListener {
+public class DefaultRewindOnDoubleClickListener implements OnDoubleClickListener {
     @Override
     public void onDoubleClick(View view) {
-        MediaControllerView mediaControllerView = (MediaControllerView) view;
-        mediaControllerView.setTime(mediaControllerView.getTime() + 5000);
+        MediaControllerView mediaControllerView = (MediaControllerView)view;
+        mediaControllerView.setTime(mediaControllerView.getTime() - 5000);
         mediaControllerView.controllerShow(3000);
     }
 }

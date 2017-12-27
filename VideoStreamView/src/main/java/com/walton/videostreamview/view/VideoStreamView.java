@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.view.Gravity;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.walton.videostreamview.listener.OnDoubleClickListener;
 import com.walton.videostreamview.listener.OnMoveHorizontallyListener;
@@ -76,6 +77,8 @@ public class VideoStreamView extends RelativeLayout{
                 inputStreams[0].close();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e){
+                Toast.makeText(context, "Check your network", Toast.LENGTH_SHORT).show();
             }
             return file;
         }

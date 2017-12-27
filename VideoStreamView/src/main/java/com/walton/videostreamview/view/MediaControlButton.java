@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.walton.videostreamview.listener.ChangeVolumeOnMoveVerticallyListener;
 import com.walton.videostreamview.listener.OnDoubleClickListener;
 import com.walton.videostreamview.listener.OnMoveVerticallyListener;
 

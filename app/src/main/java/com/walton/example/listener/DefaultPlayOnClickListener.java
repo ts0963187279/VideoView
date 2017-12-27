@@ -8,7 +8,7 @@ import com.walton.videostreamview.view.MediaControllerView;
  * Created by waltonmis on 2017/8/15.
  */
 
-public class MyPlayOnClickListener implements View.OnClickListener {
+public class DefaultPlayOnClickListener implements View.OnClickListener {
     static boolean isPause = false;
     @Override
     public void onClick(View view) {

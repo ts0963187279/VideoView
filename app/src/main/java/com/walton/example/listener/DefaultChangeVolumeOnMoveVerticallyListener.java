@@ -10,7 +10,7 @@ import com.walton.videostreamview.listener.OnMoveVerticallyListener;
  * Created by waltonmis on 2017/12/18.
  */
 
-public class MyChangeVolumeOnMoveVerticallyListener extends OnMoveVerticallyListener {
+public class DefaultChangeVolumeOnMoveVerticallyListener extends OnMoveVerticallyListener {
     @Override
     public void onMoveVertically(View view, float yPosition) {
         AudioManager audioManager = (AudioManager)view.getContext().getSystemService(Context.AUDIO_SERVICE);
