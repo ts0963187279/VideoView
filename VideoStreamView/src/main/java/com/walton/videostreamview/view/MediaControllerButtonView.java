@@ -27,30 +27,47 @@ public class MediaControllerButtonView extends LinearLayout {
     private boolean moveVerticallyMod = false;
     private float xPosition;
     private float yPosition;
-    private MediaControllerView mediaControllerView;
     private OnMoveHorizontallyListener onMoveHorizontallyListener = new ChangeProgressOnMoveHorizontalListener();
-    public MediaControllerButtonView(Context context,View mediaControllerView) {
+    private VideoPlayerView videoPlayerView;
+    public MediaControllerButtonView(Context context) {
         super(context);
-        this.mediaControllerView = (MediaControllerView) mediaControllerView;
         setGravity(Gravity.CENTER_HORIZONTAL);
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setWeightSum(10);
-        left = new MediaControlButton(context,mediaControllerView);
-        middle = new MediaControlButton(context,mediaControllerView);
-        right = new MediaControlButton(context,mediaControllerView);
+        left = new MediaControlButton(context,this);
+        middle = new MediaControlButton(context,this);
+        right = new MediaControlButton(context,this);
         left.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
         middle.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,2.0f));
         right.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,4.0f));
-        left.setBackgroundColor(Color.argb(0,0,0,0));
-        middle.setBackgroundColor(Color.argb(0,0,0,0));
-        right.setBackgroundColor(Color.argb(0,0,0,0));
+        left.setBackgroundColor(Color.argb(0,0,100,0));
+        middle.setBackgroundColor(Color.argb(0,100,0,0));
+        right.setBackgroundColor(Color.argb(0,0,0,100));
         addView(left);
         addView(middle);
         addView(right);
         left.setOnMoveVerticallyListener(new ChangeBrightnessOnMoveVerticallyListener());
         right.setOnMoveVerticallyListener(new ChangeVolumeOnMoveVerticallyListener());
     }
-    public void setRightButtonOnClickListener(OnDoubleClickListener onDoubleClickListener){
+    public void setVideoPlayerView(VideoPlayerView videoPlayerView){
+        this.videoPlayerView = videoPlayerView;
+    }
+    public void setTime(int time){
+        videoPlayerView.setTime(time);
+    }
+    public void controllerShow(int time){
+        videoPlayerView.controllerShow(time);
+    }
+    public int getTime(){
+        return videoPlayerView.getTime();
+    }
+    public void pause(){
+        videoPlayerView.pause();
+    }
+    public void start(){
+        videoPlayerView.start();
+    }
+    public void setRightButtonOnDoubleClickListener(OnDoubleClickListener onDoubleClickListener){
         right.setOnDoubleClickListener(onDoubleClickListener);
     }
     public void setRightButtonOnMoveVerticallyListener(OnMoveVerticallyListener onMoveVerticallyListener){
@@ -82,7 +99,7 @@ public class MediaControllerButtonView extends LinearLayout {
                 if(Math.abs(event.getX() - xPosition) > 50 && moveVerticallyMod != true)
                     moveHorizontallyMod = true;
                 if(moveHorizontallyMod) {
-                    onMoveHorizontallyListener.onMoveHorizontally(mediaControllerView,event.getX());
+                    onMoveHorizontallyListener.onMoveHorizontally(this,event.getX());
                     return true;
                 }
                 break;

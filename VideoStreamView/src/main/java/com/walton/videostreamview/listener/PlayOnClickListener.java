@@ -2,7 +2,7 @@ package com.walton.videostreamview.listener;
 
 import android.view.View;
 
-import com.walton.videostreamview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerButtonView;
 
 /**
  * Created by waltonmis on 2017/8/15.
@@ -12,14 +12,14 @@ public class PlayOnClickListener implements View.OnClickListener {
     static boolean isPause = false;
     @Override
     public void onClick(View view) {
-        MediaControllerView mediaControllerView = (MediaControllerView)view;
+        MediaControllerButtonView mediaControllerButtonView = (MediaControllerButtonView)view;
         if(!isPause) {
-            mediaControllerView.pause();
-            mediaControllerView.controllerShow(1000000);
+            mediaControllerButtonView.pause();
+            mediaControllerButtonView.controllerShow(1000000);
             isPause = true;
         }else {
-            mediaControllerView.start();
-            mediaControllerView.controllerShow(3000);
+            mediaControllerButtonView.start();
+            mediaControllerButtonView.controllerShow(3000);
             isPause = false;
         }
     }

@@ -2,7 +2,7 @@ package com.walton.videostreamview.listener;
 
 import android.view.View;
 
-import com.walton.videostreamview.view.MediaControllerView;
+import com.walton.videostreamview.view.MediaControllerButtonView;
 
 /**
  * Created by waltonmis on 2017/8/15.
@@ -11,8 +11,8 @@ import com.walton.videostreamview.view.MediaControllerView;
 public class ForwardOnDoubleClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
-        MediaControllerView mediaControllerView = (MediaControllerView)view;
-        mediaControllerView.setTime(mediaControllerView.getTime() + 5000);
-        mediaControllerView.controllerShow(3000);
+        MediaControllerButtonView mediaControllerButtonView = (MediaControllerButtonView)view;
+        mediaControllerButtonView.setTime(mediaControllerButtonView.getTime() + 5000);
+        mediaControllerButtonView.controllerShow(3000);
     }
 }
