@@ -9,7 +9,7 @@ import com.walton.videostreamview.view.MediaControllerButtonView;
  * Created by waltonmis on 2017/8/15.
  */
 
-public class DefaultForwardOnDoubleClickListener implements OnDoubleClickListener {
+public class LeftOnDoubleClickListener implements OnDoubleClickListener {
     @Override
     public void onDoubleClick(View view) {
         MediaControllerButtonView mediaControllerButtonView = (MediaControllerButtonView) view;

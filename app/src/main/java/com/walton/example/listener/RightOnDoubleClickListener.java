@@ -9,7 +9,7 @@ import com.walton.videostreamview.view.MediaControllerButtonView;
  * Created by waltonmis on 2017/8/15.
  */
 
-public class DefaultRewindOnDoubleClickListener implements OnDoubleClickListener {
+public class RightOnDoubleClickListener implements OnDoubleClickListener {
     @Override
     public void onDoubleClick(View view) {
         MediaControllerButtonView mediaControllerButtonView = (MediaControllerButtonView)view;

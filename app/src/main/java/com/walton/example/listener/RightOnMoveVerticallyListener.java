@@ -6,7 +6,7 @@ import android.view.View;
 import com.walton.videostreamview.listener.OnMoveVerticallyListener;
 
 /** Created by waltonmis on 2017/12/18. */
-public class DefaultChangeBrightnessOnMoveVerticallyListener extends OnMoveVerticallyListener {
+public class RightOnMoveVerticallyListener  extends OnMoveVerticallyListener {
   public void onMoveVertically(View view, float yPosition) {
       int brightness = 0;
       int adjustBrightness = 0;
