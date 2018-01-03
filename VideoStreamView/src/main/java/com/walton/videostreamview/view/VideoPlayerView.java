@@ -20,24 +20,20 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
 import android.widget.EditText;
-import com.walton.videostreamview.processor.Observer;
 import com.walton.videostreamview.listener.*;
 import java.io.File;
 import android.widget.RelativeLayout;
 import android.graphics.Color;
-
+import com.walton.videostreamview.processor.LoadUrl;
 /**
  * Created by waltonmis on 2017/8/15.
  */
-
-
-public class VideoPlayerView extends RelativeLayout implements Observer{
+public class VideoPlayerView extends RelativeLayout {
     private VideoView videoView;
     private MediaController mediaController;
     private VideoOnCompletionListener videoOnCompletionListener;
     private Context context;
     private MediaControllerButtonView mediaControllerButtonView;
-    private EditText urlEditText;
     public VideoPlayerView(Context context) {
         super(context);
 	this.context = context;
@@ -55,10 +51,10 @@ public class VideoPlayerView extends RelativeLayout implements Observer{
         videoView.setMediaController(mediaController);
 	mediaControllerButtonView.setVideoPlayerView(this);
 	addView(videoView);
-	urlEditText = new EditText(context);
-	urlEditText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-	urlEditText.setText("test");
-	urlEditText.setBackgroundColor(Color.WHITE);
+    }
+    public void setUrl(String url){
+	LoadUrl loadUrl = new LoadUrl(this);
+	loadUrl.execute(url);
     }
     public void start(){
         videoView.start();
@@ -95,8 +91,7 @@ public class VideoPlayerView extends RelativeLayout implements Observer{
     }
     public void update(File file){
 	videoView.setVideoPath(file.getAbsolutePath());
-	addView(mediaControllerButtonView);
 	videoView.start();
-	addView(urlEditText);
+	addView(mediaControllerButtonView);
     }
 }

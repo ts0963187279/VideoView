@@ -23,14 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.walton.videostreamview.listener.ChangeBrightnessOnMoveVerticallyListener;
-import com.walton.videostreamview.listener.ChangeProgressOnMoveHorizontalListener;
-import com.walton.videostreamview.listener.ChangeVolumeOnMoveVerticallyListener;
-import com.walton.videostreamview.listener.OnDoubleClickListener;
-import com.walton.videostreamview.listener.OnMoveHorizontallyListener;
-import com.walton.videostreamview.listener.OnMoveVerticallyListener;
-import com.walton.videostreamview.listener.PlayOnClickListener;
-
+import com.walton.videostreamview.listener.*;
 /**
  * Created by waltonmis on 2017/12/15.
  */
@@ -43,7 +36,7 @@ public class MediaControllerButtonView extends LinearLayout {
     private boolean moveVerticallyMod = false;
     private float xPosition;
     private float yPosition;
-    private OnMoveHorizontallyListener onMoveHorizontallyListener = new ChangeProgressOnMoveHorizontalListener();
+    private OnMoveHorizontallyListener onMoveHorizontallyListener = new ChangeProgressOnMoveHorizontallyListener();
     private VideoPlayerView videoPlayerView;
     public MediaControllerButtonView(Context context) {
         super(context);
@@ -63,7 +56,9 @@ public class MediaControllerButtonView extends LinearLayout {
         addView(middle);
         addView(right);
         left.setOnMoveVerticallyListener(new ChangeBrightnessOnMoveVerticallyListener());
-        right.setOnMoveVerticallyListener(new ChangeVolumeOnMoveVerticallyListener());
+	left.setOnDoubleClickListener(new RewindOnDoubleClickListener());;
+	right.setOnMoveVerticallyListener(new ChangeVolumeOnMoveVerticallyListener());
+	right.setOnDoubleClickListener(new ForwardOnDoubleClickListener());
 	middle.setOnClickListener(new PlayOnClickListener());
     }
     public void setVideoPlayerView(VideoPlayerView videoPlayerView){

@@ -28,7 +28,6 @@ import android.widget.Toast;
 
 import com.walton.example.listener.*;
 import com.walton.example.R;
-import com.walton.videostreamview.model.VideoFile;
 import com.walton.videostreamview.view.VideoPlayerView;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -50,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
 	//	videoPlayerView.setRightOnDoubleClickListener(new RightOnDoubleClickListener());
 	//	videoPlayerView.setRightOnMoveVerticallyListener(new RightOnMoveVerticallyListener());
 	//	videoPlayerView.setOnMoveHorizontallyListener(new AllOnMoveHorizontallyListener());
-	VideoFile videoFile = new VideoFile();
-	videoFile.addObserver(videoPlayerView);
-	videoFile.loadUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+	//	VideoFile videoFile = new VideoFile();
+	//	videoFile.addObserver(videoPlayerView);
+	//	videoFile.loadUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+	videoPlayerView.setUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
 	addContentView(videoPlayerView,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
     }
     public void getWRITE_SETTINSPermission(){

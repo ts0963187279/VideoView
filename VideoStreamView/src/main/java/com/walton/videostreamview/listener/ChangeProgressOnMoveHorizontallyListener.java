@@ -23,7 +23,7 @@ import com.walton.videostreamview.view.MediaControllerButtonView;
  * Created by waltonmis on 2017/12/18.
  */
 
-public class ChangeProgressOnMoveHorizontalListener extends OnMoveHorizontallyListener {
+public class ChangeProgressOnMoveHorizontallyListener extends OnMoveHorizontallyListener {
     @Override
     public void onMoveHorizontally(View view,float xPosition) {
 	MediaControllerButtonView mediaControllerButtonView = (MediaControllerButtonView)view;
