@@ -30,7 +30,7 @@ import com.walton.example.listener.*;
 import com.walton.example.R;
 import com.walton.videostreamview.view.VideoPlayerView;
 import android.widget.LinearLayout.LayoutParams;
-
+import android.content.res.Configuration;
 /**
  * Created by waltonmis on 2017/8/15.
  */
@@ -71,5 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "WRITE_SETTINGS permission not granted", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    @Override
+    public  void onConfigurationChanged(Configuration newConfig){
+	super.onConfigurationChanged(newConfig);
     }
 }
