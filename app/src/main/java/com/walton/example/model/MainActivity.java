@@ -43,15 +43,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWRITE_SETTINSPermission();
 	VideoPlayerView videoPlayerView = new VideoPlayerView(this);
-	//	videoPlayerView.setLeftOnDoubleClickListener(new LeftOnDoubleClickListener());
-	//	videoPlayerView.setLeftOnMoveVerticallyListener(new LeftOnMoveVerticallyListener());
-	//	videoPlayerView.setMiddleOnClickListener(new MiddleOnClickListener());
-	//	videoPlayerView.setRightOnDoubleClickListener(new RightOnDoubleClickListener());
-	//	videoPlayerView.setRightOnMoveVerticallyListener(new RightOnMoveVerticallyListener());
-	//	videoPlayerView.setOnMoveHorizontallyListener(new AllOnMoveHorizontallyListener());
-	//	VideoFile videoFile = new VideoFile();
-	//	videoFile.addObserver(videoPlayerView);
-	//	videoFile.loadUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
 	videoPlayerView.setUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
 	addContentView(videoPlayerView,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
     }
